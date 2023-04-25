@@ -1,14 +1,14 @@
-import 'package:ecommerce/pages/mainPage.dart';
-import 'package:ecommerce/pages/welcomePage.dart';
-import 'package:ecommerce/pages/welcomeScreen.dart';
+import 'package:massage/units/mainPage.dart';
+import 'package:massage/screens/welcomePage.dart';
+import 'package:massage/screens/welcomeScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(ecommerce());
+  runApp(massage());
 }
 
-class ecommerce extends StatelessWidget {
-  const ecommerce({Key? key}) : super(key: key);
+class massage extends StatelessWidget {
+  const massage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

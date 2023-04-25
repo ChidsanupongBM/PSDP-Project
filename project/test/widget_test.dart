@@ -8,12 +8,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:ecommerce/main.dart';
+import 'package:massage/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const ecommerce());
+    await tester.pumpWidget(const massage());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
