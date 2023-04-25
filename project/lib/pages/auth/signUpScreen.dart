@@ -22,6 +22,7 @@ class _signUpScreenState extends State<signUpScreen> {
   final _productDesController = TextEditingController();
 
   File? image;
+  File? image1;
 
   Future pickImage(ImageSource source) async {
     try {
@@ -29,6 +30,17 @@ class _signUpScreenState extends State<signUpScreen> {
       if (image == null) return;
       final imageTamporary = File(image.path);
       setState(() => this.image = imageTamporary);
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
+  }
+
+  Future pickImage1(ImageSource source) async {
+    try {
+      final image1 = await ImagePicker().pickImage(source: source);
+      if (image1 == null) return;
+      final imageTamporary = File(image1.path);
+      setState(() => this.image1 = imageTamporary);
     } on PlatformException catch (e) {
       print('Failed to pick image: $e');
     }
@@ -321,9 +333,9 @@ class _signUpScreenState extends State<signUpScreen> {
                             icon: Icons.image_outlined,
                             onClick: () => pickImage(ImageSource.gallery)),
                         //PickImage ID-Card
-                        image != null
+                        image1 != null
                             ? Image.file(
-                                image!,
+                                image1!,
                                 width: 250,
                                 height: 250,
                                 fit: BoxFit.cover,
@@ -337,7 +349,7 @@ class _signUpScreenState extends State<signUpScreen> {
                         IdcardButton(
                             title: 'ID-Card',
                             icon: Icons.image_outlined,
-                            onClick: () => pickImage(ImageSource.gallery)),
+                            onClick: () => pickImage1(ImageSource.gallery)),
 
                         // Expanded(
                         //   child: Padding(
