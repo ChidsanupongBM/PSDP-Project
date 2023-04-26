@@ -4,9 +4,10 @@ import 'package:page_transition/page_transition.dart';
 
 import 'package:massage/common_widgets/app_button.dart';
 import 'home/home_screen.dart';
-import 'package:massage/screens/dashboard/dashboard.dart';
 import 'login/login_creen.dart';
 import 'login/register_screen.dart';
+import 'package:massage/screens/dashboard/button_navigator.dart';
+import 'package:massage/screens/dashboard/button_navigator.dart';
 
 class welcomeScreen extends StatefulWidget {
   const welcomeScreen({Key? key}) : super(key: key);
@@ -101,7 +102,7 @@ class _welcomeScreenState extends State<welcomeScreen> {
                         PageTransition(
                             type: PageTransitionType.rightToLeftPop,
                             // child: loginScreen(),
-                            child: DashboardScreen(),
+                            child: buttonNavigator(),
                             childCurrent: welcomeScreen()));
                     // Navigator.push(context,
                     //     MaterialPageRoute(builder: (context) => loginScreen()));
@@ -156,7 +157,7 @@ class _welcomeScreenState extends State<welcomeScreen> {
   void onGetStartedClicked(BuildContext context) {
     Navigator.of(context).pushReplacement(new MaterialPageRoute(
       builder: (BuildContext context) {
-        return DashboardScreen();
+        return buttonNavigator();
       },
     ));
   }

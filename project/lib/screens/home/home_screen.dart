@@ -13,16 +13,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: Container(
-        child: SingleChildScrollView(
-            child: Center(
-          child: Column(children: [
-            SizedBox(
-              height: 15,
-            )
-          ]),
-        )),
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[Text('Test')],
       )),
     );
   }

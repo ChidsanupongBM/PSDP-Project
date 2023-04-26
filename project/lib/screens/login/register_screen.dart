@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:massage/screens/login/login_creen.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:validators/validators.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:massage/common_widgets/app_button.dart';
 
 enum ProductTypeEnum { Male, Female }
 
@@ -318,14 +321,14 @@ class _signUpScreenState extends State<signUpScreen> {
                         image != null
                             ? Image.file(
                                 image!,
-                                width: 250,
-                                height: 250,
+                                width: 150,
+                                height: 150,
                                 fit: BoxFit.cover,
                               )
                             : Image.network(
                                 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
-                                width: 250,
-                                height: 250,
+                                width: 150,
+                                height: 150,
                                 fit: BoxFit.fill,
                               ),
                         CertiButton(
@@ -336,14 +339,14 @@ class _signUpScreenState extends State<signUpScreen> {
                         image1 != null
                             ? Image.file(
                                 image1!,
-                                width: 250,
-                                height: 250,
+                                width: 300,
+                                height: 150,
                                 fit: BoxFit.cover,
                               )
                             : Image.network(
                                 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
-                                width: 250,
-                                height: 250,
+                                width: 300,
+                                height: 150,
                                 fit: BoxFit.fill,
                               ),
                         IdcardButton(
@@ -368,23 +371,83 @@ class _signUpScreenState extends State<signUpScreen> {
                         //   ),
                         // ),
 
+                        // Row(
+                        //   children: [
+                        //     Expanded(
+                        //         child: ConfirmButton(
+                        //             title: 'Submit',
+                        //             icon: Icons.check_box_outlined,
+                        //             onClick: () => {})),
+                        //     SizedBox(
+                        //       width: 100,
+                        //     ),
+                        //     Expanded(
+                        //         child: CancelButton(
+                        //             title: 'Cancel',
+                        //             icon: Icons.cancel_outlined,
+                        //             onClick: () => {}))
+                        //   ],
+                        // )
+
                         Row(
                           children: [
                             Expanded(
-                                child: ConfirmButton(
-                                    title: 'Submit',
-                                    icon: Icons.check_box_outlined,
-                                    onClick: () => {})),
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(100),
+                                  ),
+                                  primary: Color.fromARGB(255, 64, 134, 240),
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal:
+                                        MediaQuery.of(context).size.width / 10,
+                                    vertical: 10,
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      child: loginScreen(),
+                                      type: PageTransitionType.rightToLeftPop,
+                                      childCurrent: signUpScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Text('OK'),
+                              ),
+                            ),
                             SizedBox(
-                              width: 100,
+                              width: 10,
                             ),
                             Expanded(
-                                child: CancelButton(
-                                    title: 'Cancel',
-                                    icon: Icons.cancel_outlined,
-                                    onClick: () => {}))
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(100),
+                                  ),
+                                  primary: Color.fromARGB(255, 226, 71, 71),
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal:
+                                        MediaQuery.of(context).size.width / 10,
+                                    vertical: 10,
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      child: loginScreen(),
+                                      type: PageTransitionType.rightToLeftPop,
+                                      childCurrent: signUpScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Text('Cencel'),
+                              ),
+                            ),
                           ],
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -396,6 +459,25 @@ class _signUpScreenState extends State<signUpScreen> {
       ),
     );
   }
+}
+
+Widget getButton(BuildContext context) {
+  return AppButton(
+    label: "Continue",
+    fontWeight: FontWeight.w600,
+    padding: EdgeInsets.symmetric(vertical: 25),
+    onPressed: () {
+      onGetStartedClicked(context);
+    },
+  );
+}
+
+void onGetStartedClicked(BuildContext context) {
+  Navigator.of(context).pushReplacement(new MaterialPageRoute(
+    builder: (BuildContext context) {
+      return signUpScreen();
+    },
+  ));
 }
 
 Widget ConfirmButton(
@@ -439,7 +521,7 @@ Widget CertiButton(
     required IconData icon,
     required VoidCallback onClick}) {
   return Container(
-      width: 280,
+      width: 150,
       child: ElevatedButton(
         onPressed: onClick,
         child: Row(children: [
@@ -463,7 +545,7 @@ Widget IdcardButton(
         child: Row(children: [
           Icon(Icons.upload_file),
           SizedBox(
-            width: 20,
+            width: 80,
           ),
           Text(title)
         ]),

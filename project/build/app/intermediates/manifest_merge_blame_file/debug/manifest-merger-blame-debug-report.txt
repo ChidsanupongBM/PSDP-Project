@@ -33,7 +33,7 @@
 25-->[androidx.core:core:1.9.0] C:\Users\chid_\.gradle\caches\transforms-3\6710ee2e3546b398da00e75003abfc33\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
 26        android:debuggable="true"
 27        android:icon="@mipmap/ic_launcher"
-28        android:label="ecommerce" >
+28        android:label="massage" >
 29        <activity
 30            android:name="com.nnvcoders.shop.ecommerce.MainActivity"
 31            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
